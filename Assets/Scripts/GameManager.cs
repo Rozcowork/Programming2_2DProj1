@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     //public fxed update time
     public float myFixedTimer = 0;
     //explicit references to the enemy, player, and score
-    public GameObject myCollectible;
+    public GameObject myZombie;
     public GameObject myPlayer;
     public TextMeshProUGUI myScore;
     WASD playerScript;
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         if (spawnTimer >= spawnInterval)
         {
             spawnTimer = 0f;
-            Instantiate(myCollectible);
+            Instantiate(myZombie);
             Debug.Log("enemy spawn");
         }
         //because gameManager has an explicit connection to the player, we
