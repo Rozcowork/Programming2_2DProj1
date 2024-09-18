@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 271265770207841229}
   - component: {fileID: 2422062711762420395}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Zombie
   m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
