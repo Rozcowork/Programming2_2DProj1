@@ -244,7 +244,8 @@ MonoBehaviour:
   myFixedTimer: 0
   myZombie: {fileID: 3842499636408274709, guid: d26f3877d0d5ac8499d32482fc871ba6, type: 3}
   myPlayer: {fileID: 523738915}
-  myScore: {fileID: 1672765041}
+  playerScoreText: {fileID: 0}
+  playerScore: 0
   spawnInterval: 0.5
   spawnTimer: 0
 --- !u!4 &216402656
@@ -796,7 +797,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 'Score: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
