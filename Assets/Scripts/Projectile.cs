@@ -6,10 +6,10 @@ public class Projectile : MonoBehaviour
 {
     //GLOBAL VARIABLES
     public Rigidbody2D projectileRb; //Rigidbody of the projectile
-    public float speed = 3; //Speed of the projectile
+    public float speed = 4; //Speed of the projectile
 
     //PROJECTILE COUNTDOWN TIMER
-    public float projectileLife = 2;//Lifetime of the projectile
+    public float projectileLife = 5;//Lifetime of the projectile
     public float projectileCount;//Timer for the projectile
 
     public WASD playerControllerScript;
