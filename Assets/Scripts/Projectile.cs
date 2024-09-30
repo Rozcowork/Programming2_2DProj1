@@ -13,12 +13,14 @@ public class Projectile : MonoBehaviour
     public float projectileCount;//Timer for the projectile
 
     public WASD playerControllerScript;
+    public GameManager myManager;
 
     // Start is called before the first frame update
     void Start()
     {
         projectileRb = GetComponent<Rigidbody2D>();
         projectileCount = projectileLife; //timer for the projectile to equal the lifetime of the projectile
+        myManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -42,6 +44,7 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.tag == "Zombie") //if projectile is colliding with the Enemy
         {
             Destroy(collision.gameObject); //When projectile hits the Enemy the Enemy will be destroyed
+            myManager.ZombieDead();
         }
 
         Destroy(gameObject); //when the projectile collides with the anything the projectile will destroy itself

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -20,6 +21,8 @@ public class Zombie : MonoBehaviour
     public float spawnTimer;
     public float spawnInterval = 1f;
     public Transform playerPos;
+   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +36,11 @@ public class Zombie : MonoBehaviour
         if (spawnTimer >= spawnInterval)
         {
             spawnTimer = 0f;
-            Instantiate(objectPrefab, Spawn(), Quaternion.identity);
+            Vector3 spawn = Spawn();
+            Debug.Log(spawn);
+            Instantiate(objectPrefab, spawn, Quaternion.identity);
         }
+        
     }
 
     private Vector3 Spawn()
@@ -88,5 +94,4 @@ public class Zombie : MonoBehaviour
         float y = Random.Range(yBound3 + playerPos.position.y, yBound2 + playerPos.position.y);
         return new Vector3(x, y, 0);
     }
-
 }

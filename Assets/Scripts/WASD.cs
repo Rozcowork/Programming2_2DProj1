@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class WASD : MonoBehaviour
 {
-    public float collectedScore = 0f;
     //accel is public so we can fine tune the player controller from the editor
     //separate horizontal and vertical accelerations
-    public float horAccel = 1f;
-    public float vertAccel = 1f;
+    public float horAccel = .01f;
+    public float vertAccel = .01f;
 
     //"Flip" direction variables
     public bool flippedLeft; //keep track of which way our sprite is Currently facing
     public bool facingLeft; //keeps track of which way our sprite Should be facing
+
+    public GameManager myManager;
 
     // Start is called before the first frame update
     void Start()
@@ -21,14 +22,11 @@ public class WASD : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     //Fixed Update is called every physics update
     //It is a void function, so it does not return any data
-    void FixedUpdate()
+    void Update()
     {
         //First let's call our Dir() function to find out what the current player inputs are
         Vector3 currentDir = Dir();

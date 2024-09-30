@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     //public fxed update time
     public float myFixedTimer = 0;
     //explicit references to the enemy, player, and score
-    public GameObject myZombie;
+    
     public GameObject myPlayer;
     public TextMeshProUGUI playerScoreText;
     WASD playerScript;
@@ -28,17 +28,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //add time passed between frames
-        myTimer += Time.deltaTime;
-        //once the interval is hit, trigger an enemy spawn and reset timer
-        spawnTimer += Time.deltaTime;
-
-        if (spawnTimer >= spawnInterval)
-        {
-            spawnTimer = 0f;
-            Instantiate(myZombie);
-            Debug.Log("enemy spawn");
-        }
+       
         playerScoreText.text = "Score: " + playerScore;
     }
 
