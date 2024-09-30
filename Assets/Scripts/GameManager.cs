@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour
     //explicit references to the enemy, player, and score
     public GameObject myZombie;
     public GameObject myPlayer;
-    public TextMeshProUGUI myScore;
+    public TextMeshProUGUI playerScoreText;
     WASD playerScript;
-    float playerScore = 0;
+    public int playerScore = 0;
 
     public float spawnInterval = .5f;
     public float spawnTimer = 0f;
@@ -39,10 +39,12 @@ public class GameManager : MonoBehaviour
             Instantiate(myZombie);
             Debug.Log("enemy spawn");
         }
-        //because gameManager has an explicit connection to the player, we
-        //can reference the player components, including WASD.cs, and find our score
-        playerScore = playerScript.collectedScore;
-        myScore.text = playerScore.ToString();
+        playerScoreText.text = "Score: " + playerScore;
+    }
+
+    public void ZombieDead() // Update score
+    {
+        playerScore++; //Increase player score to add one to previous number in short hand
     }
 
     void FixedUpdate()
