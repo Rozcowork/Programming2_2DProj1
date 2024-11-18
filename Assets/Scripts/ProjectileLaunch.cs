@@ -9,25 +9,49 @@ public class ProjectileLaunch : MonoBehaviour
     public Transform launchPoint; //call the position of the Launch Point
 
     //COOLDOWNTIMER STUFF
-    public float shootTime = 0.5f; //how long the time is before you can launch the projectile
+    public float shootTime = 2f; //how long the time is before you can launch the projectile
     public float shootCount; //the timer on the shot
 
+    public enum stateMode
+    {
+        RED,
+        GRAY,
+        BLUE,
+    }
+    public stateMode myMode;
+    Renderer myRend;
+    Material myMat;
     // Start is called before the first frame update
     void Start()
     {
+        myRend = GetComponent<Renderer>();
+        myMat = myRend.material;
         shootCount = shootTime; //at the beginning the you have to wait 0.5s before shooting
+        InvokeRepeating("Explode", shootTime, shootCount);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && shootCount <= 0) //if you press the Left Mouse Button Down and you have not shot, you can shoot
+        switch (myMode)
         {
-            Instantiate(projectilePrefab, launchPoint.position, Quaternion.identity); //to launch the prefab at the position of the LaunchPoint
+            case stateMode.RED:
+                myMat.color = Color.red;
+                break;
 
-            shootCount = shootTime; //Make the shot count the same as the shooting time
+            case stateMode.BLUE:
+                myMat.color = Color.blue;
+                break;
+
+            case stateMode.GRAY:
+                myMat.color = Color.gray;
+                break;
+
         }
+    }
 
-        shootCount -= Time.deltaTime; //reduce the shoot count timer
+    private void Explode()
+    {
+        Instantiate(projectilePrefab, launchPoint.position, Quaternion.identity);
     }
 }

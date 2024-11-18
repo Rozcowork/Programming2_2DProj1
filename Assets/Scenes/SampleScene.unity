@@ -340,7 +340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0.22, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -464,7 +464,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300006, guid: f776e2e9690501e41a2e5b81ceb440b9, type: 3}
+  m_Sprite: {fileID: 21300002, guid: c98b9cd543d1a6d448e27babb81798a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -483,8 +483,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 523738915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1217, y: 1, z: 1}
+  m_LocalPosition: {x: 0.22, y: 0, z: 0}
+  m_LocalScale: {x: 0.7335148, y: 0.6193226, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1298441026}
@@ -503,10 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08dcf9ef4a4983b438d65fcecfa21afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horAccel: 0.01
-  vertAccel: 0.01
-  flippedLeft: 0
-  facingLeft: 0
+  speed: 5
   myManager: {fileID: 0}
 --- !u!114 &523738921
 MonoBehaviour:
@@ -522,8 +519,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 3238720652869410342, guid: 0c5d4e4972f8b0249b5a8ff5097c5ce4, type: 3}
   launchPoint: {fileID: 1298441026}
-  shootTime: 0.5
+  shootTime: 2
   shootCount: 0
+  myMode: 0
 --- !u!61 &523738922
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -537,18 +535,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0061104298, y: 0.75289184}
+  m_Offset: {x: 0.0061104, y: 1.3088174}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1, y: 1.5}
+    pivot: {x: 0.49409798, y: 0.0516875}
+    oldSize: {x: 1.7, y: 3.3}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.608104, y: 1.4942163}
+  m_Size: {x: 0.8969535, y: 2.6060677}
   m_EdgeRadius: 0
 --- !u!1 &863611400
 GameObject:
@@ -1004,7 +1002,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895252930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0.22, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

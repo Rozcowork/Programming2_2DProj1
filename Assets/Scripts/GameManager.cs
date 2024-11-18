@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     
     public GameObject myPlayer;
     public TextMeshProUGUI playerScoreText;
-    WASD playerScript;
+    MoveToMouse playerScript;
     public int playerScore = 0;
 
     public float spawnInterval = .5f;
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         myPlayer = GameObject.FindGameObjectWithTag("Player");
-        playerScript = myPlayer.GetComponent<WASD>();
+        playerScript = myPlayer.GetComponent<MoveToMouse>();
     }
 
     // Update is called once per frame

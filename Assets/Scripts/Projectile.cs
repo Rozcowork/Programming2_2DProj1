@@ -12,12 +12,15 @@ public class Projectile : MonoBehaviour
     public float projectileLife = 5;//Lifetime of the projectile
     public float projectileCount;//Timer for the projectile
 
-    public WASD playerControllerScript;
+    public MoveToMouse playerControllerScript;
     public GameManager myManager;
+
+   
 
     // Start is called before the first frame update
     void Start()
     {
+        
         projectileRb = GetComponent<Rigidbody2D>();
         projectileCount = projectileLife; //timer for the projectile to equal the lifetime of the projectile
         myManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
@@ -32,6 +35,8 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject); // when the projectile lifetime reaches 0 destroy the projectile
         }
+
+       
     }
 
     void FixedUpdate()
