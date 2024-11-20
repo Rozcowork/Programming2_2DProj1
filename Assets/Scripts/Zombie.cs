@@ -8,7 +8,7 @@ public class Zombie : MonoBehaviour
 {
     //
     public GameObject objectPrefab;
-    //
+    //Areas for Spawning Zombies
     public float xBound;
     public float yBound;
     public float xBound1;
