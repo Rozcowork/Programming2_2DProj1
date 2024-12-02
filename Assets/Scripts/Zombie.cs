@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 
 public class Zombie : MonoBehaviour
 {
-    //
+    //Calling the Zombie Prefab
     public GameObject objectPrefab;
     //Areas for Spawning Zombies
     public float xBound;

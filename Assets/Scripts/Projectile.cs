@@ -41,7 +41,9 @@ public class Projectile : MonoBehaviour
 
     void FixedUpdate()
     {
-        projectileRb.AddForce(Vector3.right * speed);
+        Vector3 targetDir = transform.up;
+        //Debug.DrawRay(transform.position, targetDir, Color.cyan);
+        projectileRb.AddForce(targetDir * speed);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) // when the projectile collides with object

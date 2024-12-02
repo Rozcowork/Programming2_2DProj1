@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.TerrainTools;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -9,7 +10,9 @@ public class ProjectileLaunch : MonoBehaviour
     //GLOBAL VARIABLES
     public GameObject projectilePrefab; //call the projectile prefab
     public GameObject projectilePrefab1;
-    public Transform launchPoint; //call the position of the Launch Point
+
+    //All the Launch Points
+    public Transform launchPoint;
     public Transform launchPoint1;
     public Transform launchPoint2;
     public Transform launchPoint3;
@@ -21,6 +24,7 @@ public class ProjectileLaunch : MonoBehaviour
     public float shootTime = 10f; //how long the time is before you can launch the projectile
     public float shootCount; //the timer on the shot
 
+    private Vector3 target;
     public enum stateMode
     {
         RED,
@@ -29,6 +33,7 @@ public class ProjectileLaunch : MonoBehaviour
     public stateMode myMode;
     Renderer myRend;
     Material myMat;
+    public GameObject laser;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,23 +46,24 @@ public class ProjectileLaunch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))
         {
-            
-        }
-        switch (myMode)
-        {
-            case stateMode.RED:
+            if (myMode== stateMode.RED)
+            {
+                myMode = stateMode.BLUE; 
+                myMat.color = Color.blue; 
+                Laser();
+            }
+            else if (myMode== stateMode.BLUE)
+            {
+                myMode = stateMode.RED;
                 myMat.color = Color.red;
-                break;
-
-            case stateMode.BLUE:
-                myMat.color = Color.blue;
-                break;
-
+            }
         }
-
-       // if(myMode!= prevMode)
+        if (myMode== stateMode.BLUE)
+        {
+            laserpath();
+        }
     }
     void Shoot()
     {
@@ -65,11 +71,6 @@ public class ProjectileLaunch : MonoBehaviour
         {
             Explode();
         }
-        else if (myMode == stateMode.BLUE)
-        {
-            Laser();
-        }
-
     }
 
     void EnterRed()
@@ -81,29 +82,36 @@ public class ProjectileLaunch : MonoBehaviour
     {
         myMat.color = Color.blue;
     }
-    
-    void EnterGray()
-    {
-        myMat.color = Color.gray;
-    }
-
     private void Explode()
     {
-        Instantiate(projectilePrefab, launchPoint.position, Quaternion.identity);
-        Instantiate(projectilePrefab, launchPoint1.position, Quaternion.identity);
-        Instantiate(projectilePrefab, launchPoint2.position, Quaternion.identity);
-        Instantiate(projectilePrefab, launchPoint3.position, Quaternion.identity);
-        Instantiate(projectilePrefab, launchPoint4.position, Quaternion.identity);
-        Instantiate(projectilePrefab, launchPoint5.position, Quaternion.identity);
-        Instantiate(projectilePrefab, launchPoint6.position, Quaternion.identity);
-        Instantiate(projectilePrefab, launchPoint7.position, Quaternion.identity);
-
+        Instantiate(projectilePrefab, launchPoint.position, launchPoint.rotation);
+        Instantiate(projectilePrefab, launchPoint1.position, launchPoint1.rotation);
+        Instantiate(projectilePrefab, launchPoint2.position, launchPoint2.rotation);
+        Instantiate(projectilePrefab, launchPoint3.position, launchPoint3.rotation);
+        Instantiate(projectilePrefab, launchPoint4.position, launchPoint4.rotation);
+        Instantiate(projectilePrefab, launchPoint5.position, launchPoint5.rotation);
+        Instantiate(projectilePrefab, launchPoint6.position, launchPoint6.rotation);
+        Instantiate(projectilePrefab, launchPoint7.position, launchPoint7.rotation);
     }
     private void Laser()
     {
-        Instantiate(projectilePrefab1, launchPoint1.position, Quaternion.identity);
-        Instantiate(projectilePrefab1, launchPoint3.position, Quaternion.identity);
-        Instantiate(projectilePrefab1, launchPoint5.position, Quaternion.identity);
-        Instantiate(projectilePrefab1, launchPoint7.position, Quaternion.identity);
+
+        laser.SetActive(true);
+        laserpath();
+        //Instantiate(projectilePrefab1, launchPoint1.position, launchPoint1.rotation);
+        //Instantiate(projectilePrefab1, launchPoint3.position, launchPoint3.rotation);
+        //Instantiate(projectilePrefab1, launchPoint5.position, launchPoint5.rotation);
+        //Instantiate(projectilePrefab1, launchPoint7.position, launchPoint7.rotation);
+    }
+    private void laserpath()
+    {
+        target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        target.z = transform.position.z;
+        Vector3 playerpos = transform.position;
+        Vector3 direction = playerpos - target;
+
+        Quaternion quaternion = Quaternion.Euler(direction.x, direction.y, direction.z);
+        Debug.Log(quaternion);
+        laser.transform.rotation = quaternion;
     }
 }
