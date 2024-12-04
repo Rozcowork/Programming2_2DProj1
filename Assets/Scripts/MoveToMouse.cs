@@ -9,6 +9,7 @@ public class MoveToMouse : MonoBehaviour
     public float speed = 5f;
     private Vector3 target;
     public GameManager myManager;
+    public SceneChanger MySceneChanger;
 
     // Start is called before the first frame update
     void Start()
@@ -26,5 +27,13 @@ public class MoveToMouse : MonoBehaviour
             target.z = transform.position.z;
         }
        transform.position = Vector3.MoveTowards(transform.position, target, speed *Time.deltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Zombie")
+        {
+            MySceneChanger.MoveToScene(2);
+        }
     }
 }

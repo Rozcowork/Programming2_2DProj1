@@ -53,7 +53,6 @@ public class Projectile : MonoBehaviour
             Destroy(collision.gameObject); //When projectile hits the Enemy the Enemy will be destroyed
             myManager.ZombieDead();
         }
-
         Destroy(gameObject); //when the projectile collides with the anything the projectile will destroy itself
     }
 }

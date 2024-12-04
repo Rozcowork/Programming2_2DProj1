@@ -25,6 +25,7 @@ public class ProjectileLaunch : MonoBehaviour
     public float shootCount; //the timer on the shot
 
     private Vector3 target;
+    public GameObject aimer;
     public enum stateMode
     {
         RED,
@@ -46,6 +47,7 @@ public class ProjectileLaunch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        aimer.transform.position = AimerPos();
         if (Input.GetMouseButtonDown(1))
         {
             if (myMode== stateMode.RED)
@@ -105,13 +107,19 @@ public class ProjectileLaunch : MonoBehaviour
     }
     private void laserpath()
     {
-        target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        target.z = transform.position.z;
-        Vector3 playerpos = transform.position;
-        Vector3 direction = playerpos - target;
+        //target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //target.z = transform.position.z;
+        //Vector3 playerpos = transform.position;
+        //Vector3 direction = target - playerpos;
+       // Quaternion quaternion= Quaternion.RotateTowards()
+       // Debug.Log(quaternion);
+        //transform.rotation.localEulerAngles = new Vector3(floatx,floaty,floatz);
 
-        Quaternion quaternion = Quaternion.Euler(direction.x, direction.y, direction.z);
-        Debug.Log(quaternion);
-        laser.transform.rotation = quaternion;
+    }
+
+    Vector3 AimerPos()
+    {
+        Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        return mouse;
     }
 }

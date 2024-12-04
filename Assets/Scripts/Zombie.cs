@@ -37,7 +37,6 @@ public class Zombie : MonoBehaviour
         {
             spawnTimer = 0f;
             Vector3 spawn = Spawn();
-            Debug.Log(spawn);
             Instantiate(objectPrefab, spawn, Quaternion.identity);
         }
         
