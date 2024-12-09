@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -4501542184456319713}
   - component: {fileID: -260107151835453188}
   - component: {fileID: 3534580501995254181}
+  - component: {fileID: 4321233662663952088}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
@@ -152,3 +153,15 @@ MonoBehaviour:
   projectileCount: 0
   playerControllerScript: {fileID: 0}
   myManager: {fileID: 0}
+--- !u!114 &4321233662663952088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031290042001338635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225168b213b2928438f018042f01a10d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

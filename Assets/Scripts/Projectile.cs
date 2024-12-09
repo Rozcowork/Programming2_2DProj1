@@ -24,6 +24,7 @@ public class Projectile : MonoBehaviour
         projectileRb = GetComponent<Rigidbody2D>();
         projectileCount = projectileLife; //timer for the projectile to equal the lifetime of the projectile
         myManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        Invoke("SelfDestroy", projectileLife);
     }
 
     // Update is called once per frame
@@ -54,5 +55,10 @@ public class Projectile : MonoBehaviour
             myManager.ZombieDead();
         }
         Destroy(gameObject); //when the projectile collides with the anything the projectile will destroy itself
+    }
+
+    private void SelfDestroy()
+    {
+            Destroy(gameObject);
     }
 }

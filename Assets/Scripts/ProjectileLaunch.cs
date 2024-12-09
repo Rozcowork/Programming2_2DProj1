@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEditor.TerrainTools;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.UIElements;
 
 public class ProjectileLaunch : MonoBehaviour
@@ -24,8 +26,8 @@ public class ProjectileLaunch : MonoBehaviour
     public float shootTime = 10f; //how long the time is before you can launch the projectile
     public float shootCount; //the timer on the shot
 
-    private Vector3 target;
-    public GameObject aimer;
+
+
     public enum stateMode
     {
         RED,
@@ -47,7 +49,6 @@ public class ProjectileLaunch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        aimer.transform.position = AimerPos();
         if (Input.GetMouseButtonDown(1))
         {
             if (myMode== stateMode.RED)
@@ -60,6 +61,7 @@ public class ProjectileLaunch : MonoBehaviour
             {
                 myMode = stateMode.RED;
                 myMat.color = Color.red;
+                laser.SetActive(false);
             }
         }
         if (myMode== stateMode.BLUE)
@@ -99,27 +101,22 @@ public class ProjectileLaunch : MonoBehaviour
     {
 
         laser.SetActive(true);
+        laser.GetComponentInChildren<shrinkRay>().resetScale();
         laserpath();
-        //Instantiate(projectilePrefab1, launchPoint1.position, launchPoint1.rotation);
-        //Instantiate(projectilePrefab1, launchPoint3.position, launchPoint3.rotation);
-        //Instantiate(projectilePrefab1, launchPoint5.position, launchPoint5.rotation);
-        //Instantiate(projectilePrefab1, launchPoint7.position, launchPoint7.rotation);
+        
     }
     private void laserpath()
     {
-        //target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //target.z = transform.position.z;
-        //Vector3 playerpos = transform.position;
-        //Vector3 direction = target - playerpos;
-       // Quaternion quaternion= Quaternion.RotateTowards()
-       // Debug.Log(quaternion);
-        //transform.rotation.localEulerAngles = new Vector3(floatx,floaty,floatz);
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = transform.position.z;
+        float lookAngle = AngleBetweenTwoPoints(transform.position, mousePosition);
+
+        laser.transform.eulerAngles = new Vector3(0, 0, lookAngle + 180);
+     
 
     }
-
-    Vector3 AimerPos()
+    private float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
     {
-        Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        return mouse;
+        return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
     }
 }
