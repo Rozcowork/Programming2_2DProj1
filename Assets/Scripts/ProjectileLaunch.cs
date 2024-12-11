@@ -26,6 +26,8 @@ public class ProjectileLaunch : MonoBehaviour
     public float shootTime = 10f; //how long the time is before you can launch the projectile
     public float shootCount; //the timer on the shot
 
+    private Vector3 laserSize;
+
 
 
     public enum stateMode
@@ -40,6 +42,7 @@ public class ProjectileLaunch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        laserSize = projectilePrefab1.transform.localScale;
         myRend = GetComponent<Renderer>();
         myMat = myRend.material;
         shootCount = shootTime; //at the beginning the you have to wait 0.5s before shooting
@@ -101,7 +104,9 @@ public class ProjectileLaunch : MonoBehaviour
     {
 
         laser.SetActive(true);
-        laser.GetComponentInChildren<shrinkRay>().resetScale();
+        shrinkRay myRay = laser.GetComponentInChildren<shrinkRay>();
+        myRay.resetScale(laserSize);
+        myRay.StartCoroutine(myRay.shrink(.1f));
         laserpath();
         
     }

@@ -6,10 +6,15 @@ public class shrinkRay : MonoBehaviour
 {
     Vector3 originalScale;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        //originalScale = transform.localScale;
+        StartCoroutine(shrink(.1f));
+    }
     void Start()
     {
-        originalScale = transform.localScale;
-        StartCoroutine(shrink(.1f));
+        
     }
 
     // Update is called once per frame
@@ -29,9 +34,10 @@ public class shrinkRay : MonoBehaviour
         }
     }
 
-    public void resetScale()
+    public void resetScale(Vector3 scale)
     {
-        transform.localScale = originalScale;
+        transform.localScale = scale;
+        Debug.Log(transform.localScale);
 
     }
 }

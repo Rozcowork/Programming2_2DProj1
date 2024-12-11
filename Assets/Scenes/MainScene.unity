@@ -403,6 +403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3534580501995254181, guid: ef9c5d5d294b01e44926801c0e7f35ec, type: 3}
+    - {fileID: 4321233662663952088, guid: ef9c5d5d294b01e44926801c0e7f35ec, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ef9c5d5d294b01e44926801c0e7f35ec, type: 3}
 --- !u!1 &519420028
 GameObject:
@@ -654,7 +655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 7966812105111814257, guid: 0c5d4e4972f8b0249b5a8ff5097c5ce4, type: 3}
-  projectilePrefab1: {fileID: 6031290042001338635, guid: ef9c5d5d294b01e44926801c0e7f35ec, type: 3}
+  projectilePrefab1: {fileID: 1789517668}
   launchPoint: {fileID: 1298441026}
   launchPoint1: {fileID: 147430932}
   launchPoint2: {fileID: 1147928628}
@@ -1333,7 +1334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1789517669
 Transform:
   m_ObjectHideFlags: 0
