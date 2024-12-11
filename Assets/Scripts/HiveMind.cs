@@ -21,7 +21,7 @@ public class HiveMind : MonoBehaviour
      private Vector3 MoveTo()
     {
 
-        transform.position = Vector3.MoveTowards(transform.position, playerPos.position, 0.001f);
+        transform.position = Vector3.MoveTowards(transform.position, playerPos.position, 0.002f);
         return playerPos.position;
     }
 }
